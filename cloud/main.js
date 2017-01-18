@@ -28,9 +28,8 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
     where: pushQuery,
     data: {
       alert: message
-    }, 
-    useMasterKey: true
-  }).then(function() {
+    }
+  },{useMasterKey: true}).then(function() {
       response.success("Push was sent successfully.")
   }, function(error) {
       response.error("Push failed to send with error: " + error.message);
