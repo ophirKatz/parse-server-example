@@ -20,6 +20,7 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
 
   // Send the push.
   // Find devices associated with the recipient user
+  Parse.Cloud.useMasterKey();
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo("id_key", id_key);
  
@@ -29,7 +30,7 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
     data: {
       alert: message
     }
-  },{useMasterKey: true}).then(function() {
+  }).then(function() {
       response.success("Push was sent successfully.")
   }, function(error) {
       response.error("Push failed to send with error: " + error.message);
