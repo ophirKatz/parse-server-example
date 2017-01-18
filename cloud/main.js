@@ -21,7 +21,7 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
   // Send the push.
   // Find devices associated with the recipient user
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo("deviceType", "android");
+  pushQuery.equalTo("id_key", id_key);
  
   // Send the push notification to results of the query
   Parse.Push.send({
