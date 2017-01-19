@@ -2,11 +2,12 @@
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hello!!!!!!#@!$#@$%!');
 });
-
+//this is the push function for client's use.
 Parse.Cloud.define("sendPushToUser", function(request, response) {
   var senderUser = request.user;
   var id_key = request.params.id_key;
-  var message = request.params.message;
+  var table_number = request.params.table_num;
+  var table_req = request.params.table_request;
 
   // Validate that the sender is allowed to send to the recipient.
   // For example each user has an array of objectIds of friends
@@ -27,7 +28,8 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
   Parse.Push.send({
     where: pushQuery,
     data: {
-      alert: message
+      table_num: table_number,
+      table_request: table_req
     }//,
      //action: "com.parse.push.intent.RECEIVE"
   },{useMasterKey: true}).then(function() {
