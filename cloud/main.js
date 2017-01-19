@@ -12,12 +12,7 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
   // Validate that the sender is allowed to send to the recipient.
   // For example each user has an array of objectIds of friends
 
-  // Validate the message text.
-  // For example make sure it is under 140 characters
-  if (message.length > 140) {
-  // Truncate and add a ...
-    message = message.substring(0, 137) + "...";
-  }
+ 
 
   // Send the push.
   // Find devices associated with the recipient user
