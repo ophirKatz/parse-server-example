@@ -31,7 +31,7 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
     },
      action: "com.parse.push.intent.RECEIVE"
   },{useMasterKey: true}).then(function() {
-      response.success("Push was sent successfully.")
+      response.success("Push was sent successfully, but was it received?")
   }, function(error) {
       response.error("Push failed to send with error: " + error.message);
   });
