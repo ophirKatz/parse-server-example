@@ -8,6 +8,7 @@ Parse.Cloud.define("sendPushToBusiness", function(request, response) {
   var id_key = request.params.installationId;
   var table_number = request.params.table_num;
   var table_req = request.params.table_request;
+  var table_client_id = request.params.respondTo;
 
   // Validate that the sender is allowed to send to the recipient.
   // For example each user has an array of objectIds of friends
@@ -24,7 +25,8 @@ Parse.Cloud.define("sendPushToBusiness", function(request, response) {
     where: pushQuery,
     data: {
       table_num: table_number,
-      table_request: table_req
+      table_request: table_req,
+      respondTo: table_client_id
     }//,
      //action: "com.parse.push.intent.RECEIVE"
   },{useMasterKey: true}).then(function() {
