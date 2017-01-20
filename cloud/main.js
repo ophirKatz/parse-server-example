@@ -57,8 +57,8 @@ Parse.Cloud.define("sendPushToClient", function(request, response) {
   Parse.Push.send({
     where: pushQuery,
     data: {
-      table_requset: table_req,
-      table_status: table_stat
+      request_type: table_req,
+      request_status: table_stat
     }//,
      //action: "com.parse.push.intent.RECEIVE"
   },{useMasterKey: true}).then(function() {
