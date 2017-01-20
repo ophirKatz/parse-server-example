@@ -5,7 +5,7 @@ Parse.Cloud.define('hello', function(req, res) {
 //this is the push function for client's use.
 Parse.Cloud.define("sendPushToUser", function(request, response) {
   var senderUser = request.user;
-  var id_key = request.params.id_key;
+  var id_key = request.params.installationId;
   var table_number = request.params.table_num;
   var table_req = request.params.table_request;
 
@@ -17,7 +17,7 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
   // Send the push.
   // Find devices associated with the recipient user
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo("id_key", id_key);
+  pushQuery.equalTo("installationId", id_key);
  
   // Send the push notification to results of the query
   Parse.Push.send({
